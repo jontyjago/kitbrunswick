@@ -85,6 +85,8 @@
 								<div class="features">
 
 								<?php
+									// Here we trigger a new Wordpress query to return all records of
+									// type Testimonial
 									$args = array(
    										'post_type' => 'testimonial',
  									);
@@ -93,13 +95,10 @@
 
 									if ( $query -> have_posts() ) :
 
-										/* Start the Loop */
+										// Loop through the available records
 										while ( $query -> have_posts() ) : $query -> the_post();
 
-											/* Include the post format-specific template for the content. If you want to
-											 * this in a child theme then include a file called called content-___.php
-											 * (where ___ is the post format) and that will be used instead.
-											 */
+											// the HTML to show testimonials kept in a separate file
 											get_template_part( 'content-testimonial', get_post_format() );
 
 										endwhile;
@@ -117,6 +116,7 @@
 								<div class="features">
 
 								<?php
+									// as per the Testimonial query and loop
 									$args = array(
    										'post_type' => 'accomplishment',
  									);
@@ -128,10 +128,6 @@
 										/* Start the Loop */
 										while ( $query -> have_posts() ) : $query -> the_post();
 
-											/* Include the post format-specific template for the content. If you want to
-											 * this in a child theme then include a file called called content-___.php
-											 * (where ___ is the post format) and that will be used instead.
-											 */
 											get_template_part( 'content-accomplishment', get_post_format() );
 
 										endwhile;
