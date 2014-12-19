@@ -163,17 +163,17 @@ function kb_options_page() {
         <input type="hidden" name="update_kb_options" value="true" />
         <h3>Tagline</h3>
 <!--    the text fields are populated with the values if they already exist -->
-    	<input type="text" name="tagline" id="tagline" size="90" value="<?php esc_attr_e( get_option( 'tagline' ) ); ?>"/>
+    	<input type="text" name="tagline" id="tagline" size="90" value="<?php esc_attr_e( get_option( 'tagline' ) ); ?>" required />
         <h3>About</h3>
-        <input type="text" name="about-title" id="about-title" size="30" value="<?php esc_attr_e( get_option( 'about-title' ) ); ?>"/>
+        <input type="text" name="about-title" id="about-title" size="30" value="<?php esc_attr_e( get_option( 'about-title' ) ); ?>" required />
         <h3>Skills</h3>
-        <input type="text" name="skills-title" id="skills-title" size="30" value="<?php esc_attr_e( get_option( 'skills-title' ) ); ?>"/>
+        <input type="text" name="skills-title" id="skills-title" size="30" value="<?php esc_attr_e( get_option( 'skills-title' ) ); ?>" required />
         <h3>Testimonials</h3>
-        <input type="text" name="testimonial-title" id="testimonial-title" size="30" value="<?php esc_attr_e( get_option( 'testimonial-title' ) ); ?>"/>
+        <input type="text" name="testimonial-title" id="testimonial-title" size="30" value="<?php esc_attr_e( get_option( 'testimonial-title' ) ); ?>" required />
         <h3>Accomplishments</h3>
-        <input type="text" name="accomplishments-title" id="accomplishments-title" size="30" value="<?php esc_attr_e( get_option( 'accomplishments-title' ) ); ?>"/>
+        <input type="text" name="accomplishments-title" id="accomplishments-title" size="30" value="<?php esc_attr_e( get_option( 'accomplishments-title' ) ); ?>" required />
         <h3>Contact</h3>
-        <input type="text" name="contact-title" id="contact-title" size="30" value="<?php esc_attr_e( get_option( 'contact-title' ) ); ?>"/>
+        <input type="text" name="contact-title" id="contact-title" size="30" value="<?php esc_attr_e( get_option( 'contact-title' ) ); ?>" required />
         
         <!-- submit button -->
         <p><input type="submit" name="search" value="Update Options" class="button" /></p>
