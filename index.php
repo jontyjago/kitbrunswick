@@ -13,6 +13,9 @@
 				$testimonial = stripslashes(get_option('testimonial-title'));
 				$accomplishments = stripslashes(get_option('accomplishments-title'));
 				$contact = stripslashes(get_option('contact-title'));
+				$contact_subtitle = stripslashes(get_option('contact-subtitle'));
+				$contact_id = stripslashes(get_option('contact-id'));
+
 			?>
 
 			<!-- Header -->
@@ -141,27 +144,22 @@
 						<section id="five">
 							<div class="container">
 								<h3><?php echo $contact; ?></h3>
-								<p>I&apos;m happy to hear from anyone with similar interests or who would like to work with me to help them in the sport, their health or their everyday life. If you want to get in touch, please send me your details, together with any questions, via the message form below.</p>
-								<form method="post" action="#">
-									<div class="row uniform">
-										<div class="6u 12u(3)"><input type="text" name="cf-name" id="cf-name" placeholder="Name" /></div>
-										<div class="6u 12u(3)"><input type="email" name="cf-email" id="cf-email" placeholder="Email" /></div>
-									</div>
-									<div class="row uniform">
-										<div class="12u"><input type="text" name="cf-subject" id="cf-subject" placeholder="Subject" /></div>
-									</div>
-									<div class="row uniform">
-										<div class="12u"><textarea name="message" id="cf-message" placeholder="cf-Message" rows="6"></textarea></div>
-									</div>
-									<div class="row uniform">
-										<div class="12u">
-											<ul class="actions">
-												<li><input type="submit" class="special" value="Send" /></li>
-												<li><input type="reset" value="Reset" /></li>
-											</ul>
-										</div>
-									</div>
-								</form>
+								<p><?php echo $contact_subtitle; ?></p>
+								
+								<?php
+									$query = new WP_Query( 'page_id='.$contact_id );
+									if ( $query -> have_posts() ) :
+
+										/* Start the Loop */
+										while ( $query -> have_posts() ) : $query -> the_post();
+
+											get_template_part( 'content-contact', get_post_format() );
+
+										endwhile;
+									endif;
+								?>
+
+
 							</div>
 						</section>
 				</div>

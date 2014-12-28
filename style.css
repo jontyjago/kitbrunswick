@@ -214,6 +214,11 @@ Version: 1.0
 		margin: 0 0 2.25em 0;
 	}
 
+	.wpcf7-form p {
+		padding: 0;
+		margin: 0;
+	}
+
 	label {
 		color: #777;
 		display: block;
