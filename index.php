@@ -15,6 +15,8 @@
 				$contact = stripslashes(get_option('contact-title'));
 				$contact_subtitle = stripslashes(get_option('contact-subtitle'));
 				$contact_id = stripslashes(get_option('contact-id'));
+				$skills_id = stripslashes(get_option('skills-id'));
+				$about_id = stripslashes(get_option('about-id'));
 
 			?>
 
@@ -51,11 +53,19 @@
 					<!-- One -->
 						<section id="one">
 							<div class="container">
-								<header class="major">
-									<h2><?php echo $about; ?></h2>
-									<p>For as long as I can remember I have always been the obsessive competitor, the fanatic, the one who when told he can&apos;t, will ensure he will, be it with academic qualifications, leadership commitments or personal development.<br />
-								</header>
-								<p>I have long been drawn to better understand what makes people compete and what makes great sportsmen, great leaders and great people. How do you inspire ? How do you coach ? How do you bring out the best… in yourself and others ? Through active participation and study I’m working to understand how the psychology, the chemistry, the environment and the very fibres of people can be tuned and transformed to make people the very best they can be.</p>
+								<?php
+									// We only want the about page here, so use the about_id to get the page_id
+									$query = new WP_Query( 'page_id='.$about_id );
+									if ( $query -> have_posts() ) :
+
+										/* Start the Loop */
+										while ( $query -> have_posts() ) : $query -> the_post();
+
+											get_template_part( 'content-about', get_post_format() );
+
+										endwhile;
+									endif;
+								?>
 								<p>&quot;<strong><i>I hated every minute of training, but I said, &apos;Don&apos;t quit. Suffer now and live the rest of your life as a champion.&apos; </i></strong>&quot; - Muhammad Ali
 							</div>
 						</section>
@@ -63,18 +73,21 @@
 					<!-- Two -->
 						<section id="two">
 							<div class="container">
-								<h3><?php echo $skills; ?></h3>
-								<p>I am fascinated by everything to do with sport, sports performance, motivation, teams, leadership and bringing the best out in myself and others.<br>
-								I am a <strong>registered Massage Therapist with an ITEC Level 3</strong> and have worked with both recreational and international athletes specialising in post injury rehabilitation methods.<br>
-								If you&apos;re troubled by an injury or just stiffness and discomfort, I can help you get back on the track, field, court, dojo or even just back into the office, ensuring you&apos;re performing at your best.</p>
-								<ul class="feature-icons">
-									<li class="fa-wrench">Health &amp; Rehabilitation</li>
-									<li class="fa-thumbs-up">Sports Massage</li>
-									<li class="fa-trophy">Leadership &amp; Sport Education</li>
-									<li class="fa-coffee">Nutrition</li>
-									<li class="fa-bolt">Motivation</li>
-									<li class="fa-users">Group &amp; 1-on-1 Training</li>
-								</ul>
+
+								<?php
+									// We only want the skills page here, so use the skills_id to get the page_id
+									$query = new WP_Query( 'page_id='.$skills_id );
+									if ( $query -> have_posts() ) :
+
+										/* Start the Loop */
+										while ( $query -> have_posts() ) : $query -> the_post();
+
+											get_template_part( 'content-skills', get_post_format() );
+
+										endwhile;
+									endif;
+								?>
+								
 								&quot;<i>Individual commitment to a group effort - that is what makes a team work, a company work, a society work, a civilization work.</i>&quot; - <strong>Vince Lombardi</strong>
 							</div>
 						</section>
@@ -147,6 +160,7 @@
 								<p><?php echo $contact_subtitle; ?></p>
 								
 								<?php
+									// We only want the contact page here, so use the contact_id to get the page_id
 									$query = new WP_Query( 'page_id='.$contact_id );
 									if ( $query -> have_posts() ) :
 
