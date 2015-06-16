@@ -175,11 +175,9 @@ function kb_options_page() {
         <h3>Contact</h3>
         <input type="text" name="contact-title" id="contact-title" size="30" value="<?php esc_attr_e( get_option( 'contact-title' ) ); ?>" required /><br />
         <textarea name="contact-subtitle" id="contact-subtitle" cols=60 rows=6><?php esc_attr_e( get_option( 'contact-subtitle' ) ); ?></textarea>
-        <h3>Page IDs</h3>
-        <p>Don't change these - you'll break stuff.</p>
-        <input type="text" name="contact-id" id="contact-id" size="5" value="<?php esc_attr_e( get_option( 'contact-id' ) ); ?>" required />Contact<br />
-        <input type="text" name="skills-id" id="skills-id" size="5" value="<?php esc_attr_e( get_option( 'skills-id' ) ); ?>" required />Skills<br />
-        <input type="text" name="about-id" id="about-id" size="5" value="<?php esc_attr_e( get_option( 'about-id' ) ); ?>" required />About<br />
+        <h3>Contact Page ID</h3>
+        <p>Don't worry about changing this - internal boring stuff</p>
+        <input type="text" name="contact-id" id="contact-id" size="5" value="<?php esc_attr_e( get_option( 'contact-id' ) ); ?>" required /><br />
         
         <!-- submit button -->
         <p><input type="submit" name="search" value="Update Options" class="button" /></p>
@@ -199,8 +197,6 @@ function kb_options_update() {
 	update_option( 'contact-title', stripslashes($_POST['contact-title'])) ;
 	update_option( 'contact-subtitle', stripslashes($_POST['contact-subtitle'])) ;
 	update_option( 'contact-id', stripslashes($_POST['contact-id'])) ;
-	update_option( 'skills-id', stripslashes($_POST['skills-id'])) ;
-	update_option( 'about-id', stripslashes($_POST['about-id'])) ;
 }
 
 /*********************
